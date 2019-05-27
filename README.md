@@ -30,7 +30,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|group|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :user_groups
