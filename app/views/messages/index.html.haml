@@ -9,10 +9,12 @@
       ユーザー名
     %ul.left-menu
       %li.left-menu__accoount-change
-        = fa_icon'edit', style:"cursor: pointer;font-size:1.5em;"
+      %label.label
+        = fa_icon'edit'
         %span<>
       %li.left-menu__make-group
-        = fa_icon'cog', style:"cursor: pointer;font-size:1.5em;"
+      %label.label
+        = fa_icon'cog'
         %span<>
 
   .left-lower
@@ -44,10 +46,11 @@
     %p.group-message
       コメント
   .message-form
-    = form_for(@message, :html => {:class => "message-form__container"}) do |f|
+    = form_for(@message, html: {class: "message-form__container"}) do |f|
       .message-form__container__input-box
         = f.text_area :text, placeholder:"type a style", :class=> "message-form__container__input-box--text"
       .message-form__container__icon-position
-        = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()", style:"cursor: pointer;font-size:1.5em;"
-        = f.file_field :upload_file, :class => "message-form__container__icon-position--file"
+        %label.label
+          = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()"
+          = f.file_field :upload_file, class: "message-form__container__icon-position--file"
       = f.submit "send", class: "message-form__container__send-button"
