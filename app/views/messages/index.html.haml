@@ -1,0 +1,53 @@
+.header
+  %h4.message
+    グループを作成しました。
+    グループを編集しました。
+
+.left-wrapper
+  .left-upper
+    %p.user-name 
+      ユーザー名
+    %ul.left-menu
+      %li.left-menu__accoount-change
+        = fa_icon'edit', style:"cursor: pointer;font-size:1.5em;"
+        %span<>
+      %li.left-menu__make-group
+        = fa_icon'cog', style:"cursor: pointer;font-size:1.5em;"
+        %span<>
+
+  .left-lower
+    %ul.left-group
+      %li.left-group__name
+        チーム名
+      %li.left-group__comment
+        最新コメント
+
+.right-wrapper
+  .right-upper
+    %ul.group-container
+      %li.group-container__current-group
+        グループ名
+        %span<>
+      %li.group-container__edit-button
+        =link_to 'Edit', root_path, class: 'edit-button'
+        %span<>
+    %p.member-name
+      Member : インスタンス変数
+  .right-lower
+    %ul.right-group
+      %li.right-group__current-user
+        ユーザー名
+        %span<>
+      %li.right-group__date-and-time
+        日時
+        %span<>
+    %p.group-message
+      コメント
+  .message-form
+    = form_for(@message, :html => {:class => "message-form__container"}) do |f|
+      .message-form__container__input-box
+        = f.text_area :text, placeholder:"type a style", :class=> "message-form__container__input-box--text"
+      .message-form__container__icon-position
+        = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()", style:"cursor: pointer;font-size:1.5em;"
+        = f.file_field :upload_file, :class => "message-form__container__icon-position--file"
+      = f.submit "send", class: "message-form__container__send-button"
