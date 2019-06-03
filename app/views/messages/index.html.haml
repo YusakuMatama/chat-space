@@ -42,13 +42,29 @@
         日時
         %span<>
     %p.group-message
+    
       コメント
   .message-form
-    = form_for(@message, html: {class: "message-form__container"}) do |f|
+    = form_for([@group, @message], html: {class: "message-form__container"}) do |f|
       .message-form__container__input-box
-        = f.text_area :text, placeholder:"type a style", :class=> "message-form__container__input-box--text"
+        = f.text_area :content, placeholder:"type a style", :class=> "message-form__container__input-box--text"
       .message-form__container__icon-position
         %label.label
           = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()"
-          = f.file_field :upload_file, class: "message-form__container__icon-position--file"
+          = f.file_field :image, class: "message-form__container__icon-position--file"
       = f.submit "send", class: "message-form__container__send-button"
+
+  -#     = form_for @group do |f|
+  -# 
+  -#   .chat-group-form__errors
+  -#     %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
+  -#     %ul
+  -#       - @group.errors.full_messages.each do |message|
+  -#         %li= message
+  -# .chat-group-form__field.clearfix
+  -#   .chat-group-form__field--left
+  -#     = f.label "グループ名", class: "chat-group-form__label"
+  -#   .chat-group-form__field--right
+  -#     = f.text_field :name, id: "chat_group_name", class:"chat-group-form__input", :placeholder => "グループ名を入力してください"
+  -# .chat-group-form__field.clearfix
+
