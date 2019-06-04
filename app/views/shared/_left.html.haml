@@ -19,7 +19,7 @@
       -current_user.groups.each do |group|
         = link_to group_messages_path(group) do
           %li.left-group__name
-            =group.name
+            = group.name
           %li.left-group__comment
-            最新コメント
+            = group.show_last_message    
 

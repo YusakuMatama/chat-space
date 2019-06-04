@@ -1,49 +1,24 @@
 .header
   %h4.message
 
-.left-wrapper
-  .left-upper
-    %p.user-name 
-      ユーザー名
-    %ul.left-menu
-      %li.left-menu__accoount-change
-      %label.label
-        = fa_icon'edit'
-        %span<>
-      %li.left-menu__make-group
-      %label.label
-        = fa_icon'cog'
-        %span<>
-
-  .left-lower
-    %ul.left-group
-      %li.left-group__name
-        チーム名
-      %li.left-group__comment
-        最新コメント
+= render '/shared/left'
 
 .right-wrapper
   .right-upper
     %ul.group-container
       %li.group-container__current-group
-        グループ名
+        =@group.name
         %span<>
       %li.group-container__edit-button
-        =link_to 'Edit', root_path, class: 'edit-button'
+        =link_to 'Edit', edit_group_path(current_user.groups.ids), class: 'edit-button'
         %span<>
     %p.member-name
-      Member : インスタンス変数
-  .right-lower
-    %ul.right-group
-      %li.right-group__current-user
-        ユーザー名
-        %span<>
-      %li.right-group__date-and-time
-        日時
-        %span<>
-    %p.group-message
+      "Member" : 
+      -@user.each do |user|
+        =user.name
     
-      コメント
+  .right-lower
+    = render @messages
   .message-form
     = form_for([@group, @message], html: {class: "message-form__container"}) do |f|
       .message-form__container__input-box
@@ -53,18 +28,4 @@
           = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()"
           = f.file_field :image, class: "message-form__container__icon-position--file"
       = f.submit "send", class: "message-form__container__send-button"
-
-  -#     = form_for @group do |f|
-  -# 
-  -#   .chat-group-form__errors
-  -#     %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
-  -#     %ul
-  -#       - @group.errors.full_messages.each do |message|
-  -#         %li= message
-  -# .chat-group-form__field.clearfix
-  -#   .chat-group-form__field--left
-  -#     = f.label "グループ名", class: "chat-group-form__label"
-  -#   .chat-group-form__field--right
-  -#     = f.text_field :name, id: "chat_group_name", class:"chat-group-form__input", :placeholder => "グループ名を入力してください"
-  -# .chat-group-form__field.clearfix
 
