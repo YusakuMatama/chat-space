@@ -25,7 +25,7 @@
         = f.text_area :content, placeholder:"type a style", :class=> "message-form__container__input-box--text"
       .message-form__container__icon-position
         %label.label
-          = fa_icon'image', onClick: "$('.message-form__container__icon-position--file').click()"
+          = fa_icon'image'
           = f.file_field :image, class: "message-form__container__icon-position--file"
       = f.submit "send", class: "message-form__container__send-button"
 
