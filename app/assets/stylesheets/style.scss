@@ -102,6 +102,7 @@
     padding: 40px 40px 0;
     background-color: #fafafa;
     box-sizing: border-box;
+    overflow: scroll;
 
     .right-group{
       display: flex;
@@ -155,7 +156,7 @@
       &__icon-position{
         position: absolute;
         right: 160px;
-        bottom: 10px;
+        bottom: 30px;
         @include label();
 
         &--file{
