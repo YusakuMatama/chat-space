@@ -47,13 +47,12 @@ $(document).on('turbolinks:load', function(){
       // 画像がない場合、コメントのみ表示
       if (data['image'] == null){
         html
-        $('.message-form__container__input-box--text').val('')
+        $("form")[0].reset();
       }
       // 画像がある場合、コメントと画像を表示
       if (data['image'] != null){
         html.append(html_image)
-        $('.message-form__container__input-box--text').val('')
-        $('.message-form__container__icon-position--file').val('')
+        $("form")[0].reset();
       }
     })
 // 非同期通信-失敗
