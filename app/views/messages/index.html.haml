@@ -10,7 +10,7 @@
         =@group.name
         %span<>
       %li.group-container__edit-button
-        =link_to 'Edit', edit_group_path(current_user.groups.ids), class: 'edit-button'
+        = link_to "Edit", edit_group_path(params[:group_id]), method: :get, class: 'edit-button'
         %span<>
     %p.member-name
       "Member" : 
