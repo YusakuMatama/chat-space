@@ -1,10 +1,11 @@
-%ul.right-group
-  %li.right-group__current-user
-    = message.user.name
-  %li.right-group__date-and-time
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
-%p.group-message  
-  - if message.content.present?
-    = message.content
-    %p.group-message__content
-      = image_tag message.image.url, class: 'group-message__content' if message.image.present?
+.message_get{data:{id: message.id}}
+  %ul.right-group
+    %li.right-group__current-user
+      = message.user.name
+    %li.right-group__date-and-time
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  %p.group-message
+    - if message.content.present?
+      = message.content
+  %p.group-message__content
+    = image_tag message.image.url, class: 'group-message__content' if message.image.present?
