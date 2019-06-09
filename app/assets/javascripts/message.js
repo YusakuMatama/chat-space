@@ -67,8 +67,8 @@ $(document).on('turbolinks:load', function(){
     })
 
   // 非同期通信-成功
-    .done(function(data){
-      html = buildMessageHTML(data)
+    .done(function(messages){
+      html = buildMessageHTML(messages)
       $('.right-lower').append(html)
       $('.right-lower').animate({scrollTop: $('.right-lower')[0].scrollHeight}, 'fast');
       $('.message-form__container__send-button').prop('disabled', false);
