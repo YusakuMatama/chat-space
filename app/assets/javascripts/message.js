@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
                 `
     return html;
   };
-  
+
   var messageTextHTML = function(message) {
     var html = `<p class="group-message">
                   ${message.content}
@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function(){
 
   var buildMessageHTML = function(message) {
     if (message.content != null && message.image.url != null) {
-      var html = messageDataHTML(message) + messageTextHTML(message) + messageImsgeHTML(message);
+      var html = messageDataHTML(message) + messageTextHTML(message) + messageImageHTML(message);
       return html;
 
     } else if (message.content != null) {
@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function(){
       return html;
 
     } else if (message.image.url != null) {
-      var html = messageDataHTML(message) + messageImsgeHTML(message);
+      var html = messageDataHTML(message) + messageImageHTML(message);
       return html;
   }
 };
