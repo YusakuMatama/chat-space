@@ -91,13 +91,9 @@ $(document).on('turbolinks:load', function(){
       .done(function(messages){
         var insertHTML = '';
         messages.forEach(function(message){
-          var group_id = message.group_id
-          var group_id_path = user_url.substring(8,10)
-          if(group_id == group_id_path){              
             insertHTML = buildMessageHTML(message);
             $('.right-lower').append(insertHTML);
             $('.right-lower').animate({scrollTop: $('.right-lower')[0].scrollHeight}, 'fast');
-            }
           })
         })
     // 自動更新-失敗
