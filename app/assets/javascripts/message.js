@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function(){
   var old_message = [];
 // コメント表示用HTML
-  var buildMessageHTML = function(message) {
-    if (message.content != null && message.image.url != null) {
+
+  var messageDataHTML = function(message) {
     var html = `<div class="message_get" data-id="${message.id}" >
                   <ul class="right-group">
                     <li class="right-group__current-user">
@@ -12,45 +12,40 @@ $(document).on('turbolinks:load', function(){
                       ${message.created_at}
                     </li>
                   </ul>
-                  <p class="group-message">
-                    ${message.content}
-                    <p class="group-message__content">
-                      <img src=${message.image.url} class= 'group-message__content'>
-                    </p>
-                  </p>
-                </div>
-               `
-    } else if (message.content != null) {
-      var html = `<div class="message_get" data-id="${message.id}" >
-                    <ul class="right-group">
-                      <li class="right-group__current-user">
-                        ${message.user_name}
-                      </li>
-                      <li class="right-group__date-and-time">
-                        ${message.created_at}
-                      </li>
-                    </ul>
-                  <p class="group-message">
-                    ${message.content}
-                  </p>
                 `
-    } else if (message.image.url != null) {
-      var html = `<div class="message_get" data-id="${message.id}" >
-                    <ul class="right-group">
-                      <li class="right-group__current-user">
-                        ${message.user_name}
-                      </li>
-                      <li class="right-group__date-and-time">
-                        ${message.created_at}
-                      </li>
-                    </ul>
-                    <p class="group-message__content">
-                      <img src=${message.image.url} class= 'group-message__content'>
-                    </p>
-                `
-    };
     return html;
   };
+  
+  var messageTextHTML = function(message) {
+    var html = `<p class="group-message">
+                  ${message.content}
+                </p>
+                `
+    return html;
+  };
+
+  var messageImageHTML = function(message){
+    var html = `<p class="group-message__content">
+                  <img src=${message.image.url} class= 'group-message__content'>
+                </p>
+              `
+    return html;
+  };
+
+  var buildMessageHTML = function(message) {
+    if (message.content != null && message.image.url != null) {
+      var html = messageDataHTML(message) + messageTextHTML(message) + messageImsgeHTML(message);
+      return html;
+
+    } else if (message.content != null) {
+      var html = messageDataHTML(message) + messageTextHTML(message);
+      return html;
+
+    } else if (message.image.url != null) {
+      var html = messageDataHTML(message) + messageImsgeHTML(message);
+      return html;
+  }
+};
 
 // メッセージ投稿機能
   $('.message-form__container').on('submit', function(e){
