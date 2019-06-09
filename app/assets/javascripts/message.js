@@ -91,11 +91,11 @@ $(document).on('turbolinks:load', function(){
       .done(function(messages){
         var insertHTML = '';
         messages.forEach(function(message){
-            insertHTML = buildMessageHTML(message);
-            $('.right-lower').append(insertHTML);
-            $('.right-lower').animate({scrollTop: $('.right-lower')[0].scrollHeight}, 'fast');
-          })
+          insertHTML = buildMessageHTML(message);
+          $('.right-lower').append(insertHTML);
+          $('.right-lower').animate({scrollTop: $('.right-lower')[0].scrollHeight}, 'fast');
         })
+      })
     // 自動更新-失敗
       .fail(function(){
         console.log('error');
