@@ -20,12 +20,14 @@
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー 
-    .chat-group-form__field.clearfix
-      #chat-group-users
-        %input{name: "chat_group[user_ids][]", type: "hidden", value: "22"}
-          %p.chat-group-user__name
-            = current_user.name
+      %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} 現チャットメンバー 
+    .chat-group-form__field--right
+      .chat-group-form__field.clearfix
+        #chat-group-users
+          %input{name: "chat_group[user_ids][]", type: "hidden", value: "22"}
+            %p.chat-group-user__name
+              -group.users.each do |user|
+                =user.name
           
   .chat-group-form__field.clearfix
     .chat-group-form__field--left

@@ -98,11 +98,12 @@ $(document).on('turbolinks:load', function(){
       })
     // 自動更新-失敗
       .fail(function(){
-        console.log('error');
       })
     }
   }
 // 5秒ごとに更新
-  setInterval(reloadMessages, 5000);
+
+  setInterval(reloadMessages, 8000);
+
 });
 
