@@ -1,4 +1,4 @@
-$(function(){
+$().on('turbolinks:load', function(){
   var old_message = [];
 // コメント表示用HTML
 
