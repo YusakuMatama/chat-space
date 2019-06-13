@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   var search_list_user = $("#user-search-result");
-  var search_list_add_group_user = $(".chat-group-user__name");
+  var search_list_add_group_user = $("#chat-group-users");
 
 // インクリメント検索結果
   function appendUser(user){
@@ -34,8 +34,9 @@ $(document).on('turbolinks:load', function(){
     appendAddToHTML(user_id, user_name);
     $(this).parent('.chat-group-user').remove();
   });
+
 // メンバーに加えたユーザーを削除する処理
-  $('.chat-group-user__name').on("click", ".chat-group-user__btn--remove", function () {
+  $('.chat-group-user').on("click", ".chat-group-user__btn--remove", function () {
     $(`#chat-group-user-8`).remove();
   });
 // メインアクション
